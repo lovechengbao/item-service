@@ -68,6 +68,9 @@ public class ItemController {
 
     @GetMapping("/{id}")
     public Item findById(@PathVariable("id") Long id){
+        System.out.println(itemCache.get(id, key -> itemService.query()
+                .ne("status", 3).eq("id", key)
+                .one()));
         return itemCache.get(id, key -> itemService.query()
                 .ne("status", 3).eq("id", key)
                 .one());

@@ -7,6 +7,8 @@ import com.heima.item.pojo.ItemStock;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.concurrent.TimeUnit;
+
 @Configuration
 public class CaffeineConfig {
 
@@ -16,6 +18,7 @@ public class CaffeineConfig {
                 .newBuilder()
                 .initialCapacity(100)
                 .maximumSize(10_000)
+                .expireAfterWrite(10, TimeUnit.SECONDS)
                 .build();
     }
 
@@ -25,6 +28,7 @@ public class CaffeineConfig {
                 .newBuilder()
                 .initialCapacity(100)
                 .maximumSize(10_000)
+                .expireAfterWrite(10, TimeUnit.SECONDS)
                 .build();
     }
 }

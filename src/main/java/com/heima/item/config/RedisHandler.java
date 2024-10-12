@@ -36,4 +36,12 @@ public class RedisHandler implements InitializingBean {
         stringRedisTemplate.opsForValue().multiSet(itemStockMap);
     }
 
+    public void saveItem(String key,Object item){
+        stringRedisTemplate.opsForValue().set(key,JSONUtil.toJsonStr(item));
+    }
+
+    public void deleteItemById(String key){
+        stringRedisTemplate.delete(key);
+    }
+
 }
